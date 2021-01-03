@@ -6,6 +6,7 @@ class BulbWrapper {
     this.saturation = 0
     this.colorTemp = 0
     this.brightness = 0
+    this.discoInterval = null
   }
 
   static Blue () {
@@ -83,6 +84,51 @@ class BulbWrapper {
     lightSettings.color_temp = lightSettings.colorTemp
 
     return this.bulb.lighting.setLightState(lightSettings)
+  }
+
+  startDisco (changeInterval = 1000) {
+    const getRandomColor = () => {
+      const colors = [
+        'white',
+        'brown',
+        'red',
+        'blue',
+        'purple',
+        'pink',
+        'green',
+      ]
+
+      const randomIndex = () => Math.floor(Math.random() * colors.length)
+
+      const toMethodName = (color) => {
+        const firstToUpper = color[0].toUpperCase()
+
+        return firstToUpper + color.slice(1)
+      }
+
+      let index = randomIndex()
+
+      let color = colors[index]
+
+      if (!color) {
+        return ''
+      }
+
+      return toMethodName(color)
+    }
+
+    let previousColor = undefined
+    let color = getRandomColor()
+
+    this.discoInterval = setInterval(async () => {
+      while (color === previousColor) {
+        color = getRandomColor()
+        previousColor = color
+      }
+
+      console.log(`setting bulb color to ${color}`)
+    //   await this.setColor(BulbWrapper[color]())
+    }, changeInterval);
   }
 }
 

@@ -1,6 +1,8 @@
 Party Mode For Smart Lights*
 ===
 
+![](disco_720.gif)
+
 Bulbs supported:
 
 - Kasa KL130
