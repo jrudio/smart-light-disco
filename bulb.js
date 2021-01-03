@@ -117,17 +117,11 @@ class BulbWrapper {
       return toMethodName(color)
     }
 
-    let previousColor = undefined
-    let color = getRandomColor()
-
     this.discoInterval = setInterval(async () => {
-      while (color === previousColor) {
-        color = getRandomColor()
-        previousColor = color
-      }
+      let color = getRandomColor()
 
-      console.log(`setting bulb color to ${color}`)
-    //   await this.setColor(BulbWrapper[color]())
+      // console.log(`setting bulb color to ${color}`)
+      await this.setColor(BulbWrapper[color]())
     }, changeInterval);
   }
 }
