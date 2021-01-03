@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "jrudio",
+  "author": "Justin Rudio (jrudio)",
   "license": "ISC",
   "dependencies": {
     "tplink-smarthome-api": "^3.1.0"

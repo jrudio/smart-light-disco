@@ -1,9 +1,9 @@
-Party Mode For Smart Lights*
+Disco Mode For Smart Lights*
 ===
 
 ![](disco_720.gif)
 
-Bulbs supported:
+**Bulbs supported:**
 
 - Kasa KL130
 
@@ -16,9 +16,11 @@ Planned support:
 How to use
 ===
 
+`npm install smart-light-disco`
+
 ```
 const { Client } = require('tplink-smarthome-api');
-const BulbWrapper = require('./bulb');
+const BulbWrapper = require('smart-light-disco');
 
 const client = new Client();
 

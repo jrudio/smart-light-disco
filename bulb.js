@@ -87,9 +87,8 @@ class BulbWrapper {
   }
 
   startDisco (changeInterval = 1000) {
-    const getRandomColor = () => {
+    const getRandomColor = (previousColor = undefined) => {
       const colors = [
-        'white',
         'brown',
         'red',
         'blue',
@@ -112,6 +111,8 @@ class BulbWrapper {
 
       if (!color) {
         return ''
+      } else if (previousColor === color) {
+        color = getRandomColor(previousColor)
       }
 
       return toMethodName(color)

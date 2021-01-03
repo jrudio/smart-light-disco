@@ -14,5 +14,5 @@ const client = new Client();
 
   const bulb = new BulbWrapper(device)
 
-  bulb.startDisco(750)
+  bulb.startDisco(350)
 })()
