@@ -5,7 +5,7 @@ Disco Mode For Smart Lights*
 
 **Bulbs supported:**
 
-- Kasa KL130
+- Kasa KL130, LB130
 
 Planned support:
 
@@ -15,7 +15,7 @@ Planned support:
 
 How to use
 ===
-
+Note: on the below, it worked best to install tplink-smarthome-api in the same directory as the repo code [Peter]
 `npm install smart-light-disco`
 
 ```
