@@ -125,6 +125,76 @@ class BulbWrapper {
       await this.setColor(BulbWrapper[color]())
     }, changeInterval);
   }
+
+
+
+  startFlagRandom (changeInterval = 10000) {
+    const getRandomColor = (previousColor = undefined) => {
+      const colors = [
+        'white',
+        'red',
+        'blue'
+      ]
+
+      const randomIndex = () => Math.floor(Math.random() * colors.length)
+
+      const toMethodName = (color) => {
+        const firstToUpper = color[0].toUpperCase()
+
+        return firstToUpper + color.slice(1)
+      }
+
+      let index = randomIndex()
+
+      let color = colors[index]
+
+      if (!color) {
+        return ''
+      } else if (previousColor === color) {
+        color = getRandomColor(previousColor)
+      }
+
+      return toMethodName(color)
+    }
+
+    this.discoInterval = setInterval(async () => {
+      let color = getRandomColor()
+
+      // console.log(`setting bulb color to ${color}`)
+      await this.setColor(BulbWrapper[color]())
+    }, changeInterval);
+  }
+
+  startFlagLoop (changeInterval = 10000) {
+
+    const colors = [
+      'white',
+      'red',
+      'blue'
+    ]
+
+    const toMethodName = (color) => {
+      const firstToUpper = color[0].toUpperCase()
+
+      return firstToUpper + color.slice(1)
+    }
+
+
+    let index = 0;
+
+    this.discoInterval = setInterval(async () => {
+      console.log(index);
+      let color = toMethodName(colors[index]);
+      await this.setColor(BulbWrapper[color]())
+      console.log(`setting bulb color to ${color}`);
+      index = (index + 1) % colors.length;
+    }, changeInterval);
+
+
+
+  }
+
+
 }
 
 module.exports = BulbWrapper
